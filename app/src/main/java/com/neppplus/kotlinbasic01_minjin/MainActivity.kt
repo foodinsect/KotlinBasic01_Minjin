@@ -2,14 +2,19 @@ package com.neppplus.kotlinbasic01_minjin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.clickBtn
-import kotlinx.android.synthetic.main.activity_main.smallBtn
+import android.util.Log
+import com.neppplus.kotlinbasic01_minjin.databinding.ActivityMainBinding // 추가
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding // 추가
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater) // 추가
+        setContentView(binding.root) // 변경
 
-
+        binding.clickBtn.setOnClickListener { // 변경
+            Log.d("메인화면","클릭용 버튼 눌림")
+        }
     }
 }
